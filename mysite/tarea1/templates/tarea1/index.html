@@ -31,12 +31,14 @@ body {
                 <tr>
                     <th>Comment</th>
                     <th>IP</th>
+                    <th>Date</th>
                 </tr>
                 <tbody>
                     {%for comment in comments %}
                     <tr>
                         <td>{{comment.comment}}</td>
                         <td>{{comment.ip_address}}</td>
+                        <td>{{comment.date}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
