@@ -2,21 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Tarea1</title>
 </head>
+
+<style>
+body {
+    background-image: linear-gradient(to right, grey , lightyellow);
+}
+</style>
+
+
 <body>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
-{% for comment in all_comments %}
-    {{comment.comment}}
-{% endfor %}
+    <div>
+        <br>
+        <h1 class = 'text-center'>Tarea 1</h1>
+    </div>
+    <div class = 'row mt-5'>
+        <div class = 'col-lg-4 '></div>
 
-<br>
-end
+        <div class = 'col-lg-4'>
+
+            <table border="1" class = 'w3-table w3-striped'>
+                <tr>
+                    <th>Comment</th>
+                    <th>IP</th>
+                </tr>
+                <tbody>
+                    {%for comment in comments %}
+                    <tr>
+                        <td>{{comment.comment}}</td>
+                        <td>{{comment.ip_address}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <br>
+            <form action="/create" method="post">
+                {% csrf_token %}
+                <label for="comment"> Your comment: <input type="text", name="comment" /> </label>
+                <input type="submit" value="Create">
+            </form>
+
+
+        </div>
+
+        <div class = 'col-lg-4'></div>
+    </div>
 
 </body>
 </html>
