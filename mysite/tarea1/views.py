@@ -1,8 +1,6 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
 from .models import Comment
-from django.template.loader import render_to_string
-
+import datetime
 
 def index(request):
     comments = Comment.objects.all()
@@ -12,6 +10,7 @@ def index(request):
 
 def create(request):
     comment = Comment(comment = request.POST['comment'],
-                      ip_address = request.environ['REMOTE_ADDR'])
+                      ip_address = request.environ['REMOTE_ADDR'],
+                      date = datetime.datetime.now())
     comment.save()
     return redirect('/')
